@@ -1307,6 +1307,44 @@ async function checkUserLogin() {
     }  
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", async function () {
+  const client = window.supabaseClient;
+  const loginButton = document.querySelector(
+    '.header-actions button[aria-label="Login"]'
+  );
+
+  if (!client) {
+    console.error("Supabase client not initialized!");
+    return;
+  }
+
+  // Check whether user is already logged in
+  async function updateLoginButton() {
+    const { data: { session } } = await client.auth.getSession();
+
+    if (loginButton) {
+      loginButton.style.display = session ? "none" : "";
+    }
+
+    // Show login popup only if the user is not logged in
+    if (!session && !sessionStorage.getItem("loginPopupShown")) {
+      if (typeof openAuth === "function") {
+        openAuth();
+        sessionStorage.setItem("loginPopupShown", "yes");
+      }
+    }
+  }
+
+  await updateLoginButton();
+
+  // Update button whenever login or logout happens
+  client.auth.onAuthStateChange(function () {
+    updateLoginButton();
+  });
+});
+</script>
+  
 <!-- THE STYLE GURU LOGIN -->
 <div id="authModal" style="
 display:none;
