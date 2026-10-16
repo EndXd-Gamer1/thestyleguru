@@ -1,1 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8f7f4">
+<meta name="description" content="Discover contemporary men's fashion at The Style Guru. Explore premium essentials, everyday styles and new arrivals.">
+<title>THE STYLE GURU | Wear Your Identity</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f8f7f4;
+  --ink: #171815;
+  --muted: #777770;
+  --line: #e5e3dd;
+  --accent: #c9a878;
+  --white: #fff;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+.announcement {
+  background: var(--ink);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+header {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6%;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  white-space: nowrap;
+}
+
+.logo span { color: #b18b56; }
+
+nav {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+}
+
+nav a {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+nav a:hover { color: #a27c48; }
+
+.header-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.icon-btn {
+  border: 0;
+  background: transparent;
+  font-size: 19px;
+  padding: 5px;
+}
+
+.cart-count {
+  display: inline-flex;
+  background: var(--ink);
+  color: white;
+  border-radius: 50%;
+  width: 19px;
+  height: 19px;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+}
+
+.hero {
+  min-height: 490px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  background: #e8e4dc;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 55px 12%;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #8b6b42;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(44px, 5vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -2px;
+  font-weight: 600;
+  margin: 22px 0;
+}
+
+.hero p {
+  color: #5e5d57;
+  line-height: 1.8;
+  font-size: 13px;
+  max-width: 340px;
+}
+
+.primary-btn {
+  display: inline-block;
+  background: var(--ink);
+  color: white;
+  border: 1px solid var(--ink);
+  padding: 16px 26px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  width: fit-content;
+}
+
+.primary-btn:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+.hero-image {
+  min-height: 490px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.04), transparent),
+    url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1100&q=85')
+    center 32% / cover;
+}
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--line);
+  padding: 21px 5%;
+  gap: 10px;
+}
+
+.benefit {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.benefit small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0;
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+.section {
+  padding: 76px 6%;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 4vw, 43px);
+  font-weight: 600;
+  margin: 10px 0 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.filters {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.filter-btn {
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 10px 15px;
+  font-size: 10px;
+  letter-spacing: .7px;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 27px 16px;
+}
+
+.product-image {
+  position: relative;
+  background: #eeece7;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+  display: block;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.045);
+}
+
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: white;
+  padding: 7px 9px;
+  font-size: 9px;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+}
+
+.wish-btn {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  border: none;
+  background: white;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 19px;
+}
+
+.wish-btn.selected { color: #b23a40; }
+
+.product-info { padding-top: 13px; }
+
+.product-category {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.product-name {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.price {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.old-price {
+  color: #92918b;
+  text-decoration: line-through;
+  font-size: 11px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
+.product-controls {
+  display: flex;
+  gap: 7px;
+  margin-top: 13px;
+}
+
+.size-select {
+  min-width: 0;
+  width: 65px;
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 9px 4px;
+  font-size: 10px;
+}
+
+.add-btn {
+  flex: 1;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: white;
+  font-size: 9px;
+  letter-spacing: .7px;
+  padding: 10px 4px;
+  text-transform: uppercase;
+}
+
+.add-btn:hover {
+  background: white;
+  color: var(--ink);
+}
+
+.empty-results {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  padding: 35px 0;
+}
+
+.collection-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 300px;
+  background: #e7e1d7;
+}
+
+.collection-image {
+  background: url('https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=85') center / cover;
+  min-height: 300px;
+}
+
+.collection-copy {
+  padding: 45px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.collection-copy h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 39px;
+  margin: 15px 0;
+}
+
+.collection-copy p {
+  font-size: 12px;
+  color: #66645e;
+  line-height: 1.8;
+}
+
+.newsletter {
+  text-align: center;
+  padding: 65px 20px;
+  background: #eeece6;
+}
+
+.newsletter h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  margin: 12px 0;
+}
+
+.newsletter p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.newsletter-form {
+  display: flex;
+  max-width: 420px;
+  margin: 25px auto 0;
+}
+
+.newsletter-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #d7d3ca;
+  background: transparent;
+  outline: none;
+  font-size: 12px;
+}
+
+.newsletter-form button {
+  border: 0;
+  background: var(--ink);
+  color: white;
+  padding: 0 17px;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+footer {
+  background: var(--ink);
+  color: white;
+  padding: 45px 6% 22px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 30px;
+  padding-bottom: 35px;
+}
+
+footer .logo { display: inline-block; }
+
+footer p {
+  color: #aaa9a2;
+  font-size: 11px;
+  line-height: 1.9;
+  max-width: 300px;
+}
+
+footer h4 {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin-top: 4px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  font-size: 11px;
+  color: #c5c4bd;
+}
+
+.copyright {
+  border-top: 1px solid #343530;
+  padding-top: 20px;
+  color: #aaa9a2;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Cart drawer */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 19;
+  display: none;
+}
+
+.overlay.open { display: block; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -440px;
+  height: 100%;
+  width: min(420px, 92vw);
+  background: var(--bg);
+  z-index: 20;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: right .3s;
+}
+
+.cart-drawer.open { right: 0; }
+
+.cart-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 15px;
+}
+
+.cart-heading h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  margin: 0;
+}
+
+.close-btn {
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding-top: 12px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 75px 1fr auto;
+  gap: 13px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-item img {
+  width: 75px;
+  height: 95px;
+  object-fit: cover;
+}
+
+.cart-item h4 {
+  margin: 4px 0 8px;
+  font-size: 12px;
+}
+
+.cart-item p {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.quantity {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.quantity button {
+  width: 25px;
+  height: 25px;
+  background: transparent;
+  border: 1px solid var(--line);
+}
+
+.remove-btn {
+  background: transparent;
+  border: 0;
+  font-size: 11px;
+  color: #a23b3b;
+  margin-top: 8px;
+}
+
+.cart-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.total-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cart-bottom .primary-btn {
+  width: 100%;
+  text-align: center;
+}
+
+.cart-note {
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.empty-cart {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 55px;
+  font-size: 13px;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  z-index: 30;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.modal.open { display: flex; }
+
+.modal-card {
+  width: min(450px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--bg);
+  padding: 25px;
+}
+
+.modal-card h2 {
+  font-family: 'Playfair Display', serif;
+  margin-top: 0;
+}
+
+.modal-card label {
+  display: block;
+  font-size: 11px;
+  margin-top: 15px;
+}
+
+.modal-card input,
+.modal-card textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  background: white;
+  margin-top: 6px;
+  outline: none;
+  font-size: 12px;
+}
+
+.modal-card textarea {
+  min-height: 75px;
+  resize: vertical;
+}
+
+.modal-card .primary-btn {
+  width: 100%;
+  text-align: center;
+}
+
+.modal-note {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+@media (min-width: 1200px) {
+  .hero { min-height: 560px; }
+  .hero-image { min-height: 560px; }
+}
+
+@media (max-width: 760px) {
+  header { height: 64px; padding: 0 4%; }
+  .logo { font-size: 15px; letter-spacing: 1.4px; }
+  nav { display: none; }
+  .header-actions { gap: 9px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding: 48px 7%; }
+  .hero h1 { font-size: 52px; }
+  .hero-image { min-height: 340px; }
+  .benefits { padding: 17px 3%; }
+  .benefit { font-size: 9px; }
+  .benefit small { font-size: 9px; }
+  .section { padding: 52px 4%; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .product-name { font-size: 11px; }
+  .product-controls { gap: 5px; }
+  .size-select { width: 58px; }
+  .add-btn { font-size: 8px; }
+  .collection-banner { grid-template-columns: 1fr; }
+  .collection-image { min-height: 290px; }
+  .collection-copy { padding: 32px 7%; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .section-heading { align-items: start; }
+}
+
+@media (max-width: 360px) {
+  .logo { font-size: 13px; }
+  .header-actions { gap: 4px; }
+  .hero h1 { font-size: 43px; }
+  .product-controls { flex-direction: column; }
+  .size-select { width: 100%; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+  THE STYLE GURU — DISCOVER YOUR EVERYDAY STYLE
+</div>
+
+<header>
+  <a href="#" class="logo">THE STYLE <span>GURU.</span></a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#new">New Arrivals</a>
+    <a href="#about">Our Story</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="icon-btn" aria-label="Search products"
+      onclick="document.getElementById('search').focus()">⌕</button>
+    <button class="icon-btn" aria-label="Open shopping cart"
+      onclick="openCart()">Bag <span class="cart-count" id="cartCount">0</span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-copy">
+    <span class="eyebrow">The new everyday</span>
+    <h1>Wear Your<br>Identity.</h1>
+    <p>
+      Style isn't about following trends. It's about making them your own.
+      Discover everyday essentials made for your kind of confidence.
+    </p>
+    <a class="primary-btn" href="#shop">Explore Collection →</a>
+  </div>
+  <div class="hero-image" role="img" aria-label="Contemporary fashion editorial"></div>
+</section>
+
+<div class="benefits">
+  <div class="benefit">01 — EVERYDAY ESSENTIALS
+    <small>Made for your daily style</small>
+  </div>
+  <div class="benefit">02 — YOUR STYLE, YOUR RULES
+    <small>Find your own expression</small>
+  </div>
+  <div class="benefit">03 — THE NEW CLASSICS
+    <small>Timeless wardrobe staples</small>
+  </div>
+</div>
+
+<section class="section" id="shop">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">Curated for you</span>
+      <h2>Shop the Collection</h2>
+    </div>
+    <p>Find your next favourite.</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="All">All Products</button>
+    <button class="filter-btn" data-filter="T-Shirts">T-Shirts</button>
+    <button class="filter-btn" data-filter="Shirts">Shirts</button>
+    <button class="filter-btn" data-filter="Hoodies">Hoodies</button>
+    <button class="filter-btn" data-filter="Bottoms">Bottoms</button>
+  </div>
+
+  <div style="margin-bottom:22px">
+    <input id="search" type="search" placeholder="Search your style..."
+      aria-label="Search products"
+      style="width:100%;max-width:400px;padding:13px;border:1px solid var(--line);background:transparent;font-size:12px;outline:none">
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="section" id="new" style="padding-top:0">
+  <div class="collection-banner">
+    <div class="collection-image" role="img" aria-label="Casual clothing collection"></div>
+    <div class="collection-copy">
+      <span class="eyebrow">Less, but better</span>
+      <h2>The Everyday Edit.</h2>
+      <p>
+        Clean silhouettes. Easy layers. Pieces that work together,
+        season after season.
+      </p>
+      <a href="#shop" class="primary-btn">Find Your Fit →</a>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter" id="about">
+  <span class="eyebrow">Welcome to our world</span>
+  <h2>Style Starts Here.</h2>
+  <p>
+    The Style Guru is about finding confidence in what you wear.<br>
+    Discover pieces that feel like you.
+  </p>
+  <form class="newsletter-form" id="newsletterForm">
+    <input type="email" id="newsletterEmail" placeholder="Your email address"
+      aria-label="Email address" required>
+    <button type="submit">JOIN US →</button>
+  </form>
+  <p id="newsletterMessage" aria-live="polite"></p>
+</section>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">THE STYLE <span>GURU.</span></a>
+      <p>
+        Everyday fashion. Individual expression.
+        Discover your style with The Style Guru.
+      </p>
+    </div>
+
+    <div>
+      <h4>EXPLORE</h4>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#shop">Shop All</a>
+        <a href="#new">New Arrivals</a>
+        <a href="#about">Our Story</a>
+      </div>
+    </div>
+
+    <div>
+      <h4>INFORMATION</h4>
+      <div class="footer-links">
+        <a href="mailto:hello@thestyleguru.in">Contact Us</a>
+        <a href="#policies" onclick="showPolicy('Shipping Information','Shipping charges and delivery times will be confirmed before launch.')">Shipping</a>
+        <a href="#policies" onclick="showPolicy('Returns & Exchanges','Our return and exchange policy will be published before accepting real orders.')">Returns</a>
+        <a href="#policies" onclick="showPolicy('Privacy','A full privacy policy must be added before collecting real customer information.')">Privacy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="copyright">
+    <span>© <span id="year"></span> THE STYLE GURU. All rights reserved.</span>
+    <span>FIND YOUR OWN STYLE.</span>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+  <div class="cart-heading">
+    <h2>Your Shopping Bag</h2>
+    <button class="close-btn" onclick="closeCart()" aria-label="Close cart">×</button>
+  </div>
+
+  <div class="cart-items" id="cartItems"></div>
+
+  <div class="cart-bottom">
+    <div class="total-line">
+      <span>Subtotal</span>
+      <span id="cartTotal">₹0</span>
+    </div>
+    <p class="cart-note">Demo store: shipping and taxes are not calculated.</p>
+    <button class="primary-btn" onclick="checkout()">Continue to Checkout →</button>
+  </div>
+</aside>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2>Order Request</h2>
+      <button class="close-btn" onclick="closeCheckout()" aria-label="Close">×</button>
+    </div>
+
+    <p class="modal-note">
+      This is a preview checkout. It does not charge customers or send orders
+      to a store owner. Do not enter real personal information in this demo.
+    </p>
+
+    <form id="checkoutForm">
+      <label for="customerName">Full name</label>
+      <input id="customerName" required maxlength="100" placeholder="Your name">
+
+      <label for="customerPhone">Phone number</label>
+      <input id="customerPhone" required type="tel" maxlength="20"
+        placeholder="Your phone number">
+
+      <label for="customerAddress">Delivery address</label>
+      <textarea id="customerAddress" required maxlength="500"
+        placeholder="Delivery address"></textarea>
+
+      <button class="primary-btn" type="submit">Preview Order →</button>
+    </form>
+    <p class="modal-note" id="checkoutMessage" aria-live="polite"></p>
+  </div>
+</div>
+
+<div class="modal" id="infoModal">
+  <div class="modal-card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2 id="infoTitle">Information</h2>
+      <button class="close-btn" onclick="closeInfo()" aria-label="Close">×</button>
+    </div>
+    <p id="infoText" class="modal-note"></p>
+  </div>
+</div>
+
+<script>
+const products = [
+  {
+    id: 1,
+    name: "Essential Black Tee",
+    category: "T-Shirts",
+    price: 499,
+    oldPrice: 699,
+    tag: "Bestseller",
+    image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 2,
+    name: "Classic White Tee",
+    category: "T-Shirts",
+    price: 449,
+    oldPrice: 599,
+    tag: "Essential",
+    image: "https://images.unsplash.com/photo-1527719327859-c6ce80353573?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 3,
+    name: "Urban Oversized Tee",
+    category: "T-Shirts",
+    price: 599,
+    oldPrice: 799,
+    tag: "Trending",
+    image: "https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 4,
+    name: "Relaxed Casual Shirt",
+    category: "Shirts",
+    price: 899,
+    oldPrice: 1199,
+    tag: "New",
+    image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 5,
+    name: "Everyday Blue Shirt",
+    category: "Shirts",
+    price: 799,
+    oldPrice: 999,
+    tag: "Essential",
+    image: "https://images.unsplash.com/photo-1603252110481-7ba873bf42ab?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 6,
+    name: "Classic Street Hoodie",
+    category: "Hoodies",
+    price: 1199,
+    oldPrice: 1499,
+    tag: "Trending",
+    image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 7,
+    name: "Minimal Grey Hoodie",
+    category: "Hoodies",
+    price: 1299,
+    oldPrice: 1599,
+    tag: "New",
+    image: "https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=650&q=80"
+  },
+  {
+    id: 8,
+    name: "Relaxed Fit Trousers",
+    category: "Bottoms",
+    price: 999,
+    oldPrice: 1299,
+    tag: "Essential",
+    image: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=650&q=80"
+  }
+];
+
+let activeFilter = "All";
+let cart = [];
+let wishlist = new Set();
+
+try {
+  const saved = JSON.parse(localStorage.getItem("tsg-demo-cart") || "[]");
+  if (Array.isArray(saved)) {
+    cart = saved.filter(item =>
+      products.some(product => product.id === item.id) &&
+      Number.isInteger(item.qty) && item.qty > 0 &&
+      ["S", "M", "L", "XL", "XXL"].includes(item.size)
+    );
+  }
+} catch (error) {
+  cart = [];
+}
+
+const money = amount => "₹" + amount.toLocaleString("en-IN");
+
+function renderProducts() {
+  const search = document.getElementById("search").value.toLowerCase().trim();
+
+  const filtered = products.filter(product => {
+    const matchesCategory =
+      activeFilter === "All" || product.category === activeFilter;
+    const matchesSearch =
+      product.name.toLowerCase().includes(search) ||
+      product.category.toLowerCase().includes(search);
+    return matchesCategory && matchesSearch;
+  });
+
+  const container = document.getElementById("products");
+
+  if (!filtered.length) {
+    container.innerHTML =
+      '<p class="empty-results">No matching products. Try another search.</p>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(product => `
+    <article class="product-card">
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.name}" loading="lazy">
+        <span class="tag">${product.tag}</span>
+        <button class="wish-btn ${wishlist.has(product.id) ? "selected" : ""}"
+          onclick="toggleWish(${product.id})"
+          aria-label="Add ${product.name} to wishlist">
+          ${wishlist.has(product.id) ? "♥" : "♡"}
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">${product.category}</div>
+        <div class="product-name">${product.name}</div>
+        <div class="price">
+          ${money(product.price)}
+          <span class="old-price">${money(product.oldPrice)}</span>
+        </div>
+        <div class="product-controls">
+          <select class="size-select" id="size-${product.id}"
+            aria-label="Select size for ${product.name}">
+            <option value="S">Size S</option>
+            <option value="M" selected>Size M</option>
+            <option value="L">Size L</option>
+            <option value="XL">Size XL</option>
+            <option value="XXL">Size XXL</option>
+          </select>
+          <button class="add-btn" onclick="addToCart(${product.id})">
+            Add to Bag +
+          </button>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function toggleWish(id) {
+  if (wishlist.has(id)) wishlist.delete(id);
+  else wishlist.add(id);
+  renderProducts();
+}
+
+function saveCart() {
+  try {
+    localStorage.setItem("tsg-demo-cart", JSON.stringify(cart));
+  } catch (error) {}
+}
+
+function addToCart(id) {
+  const size = document.getElementById("size-" + id).value;
+  const existing = cart.find(item => item.id === id && item.size === size);
+
+  if (existing) existing.qty++;
+  else cart.push({ id, size, qty: 1 });
+
+  saveCart();
+  renderCart();
+  openCart();
+}
+
+function changeQty(id, size, change) {
+  const item = cart.find(item => item.id === id && item.size === size);
+  if (!item) return;
+
+  item.qty += change;
+  if (item.qty <= 0) {
+    cart = cart.filter(item => !(item.id === id && item.size === size));
+  }
+
+  saveCart();
+  renderCart();
+}
+
+function removeItem(id, size) {
+  cart = cart.filter(item => !(item.id === id && item.size === size));
+  saveCart();
+  renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.qty, 0);
+  const total = cart.reduce((sum, item) => {
+    const product = products.find(product => product.id === item.id);
+    return sum + (product ? product.price * item.qty : 0);
+  }, 0);
+
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = money(total);
+
+  const container = document.getElementById("cartItems");
+
+  if (!cart.length) {
+    container.innerHTML =
+      '<div class="empty-cart">Your bag is waiting for something special. ♡</div>';
+    return;
+  }
+
+  container.innerHTML = cart.map(item => {
+    const product = products.find(product => product.id === item.id);
+    if (!product) return "";
+
+    return `
+      <div class="cart-item">
+        <img src="${product.image}" alt="${product.name}">
+        <div>
+          <h4>${product.name}</h4>
+          <p>Size: ${item.size} · ${money(product.price)}</p>
+          <div class="quantity">
+            <button onclick="changeQty(${item.id}, '${item.size}', -1)"
+              aria-label="Decrease quantity">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${item.id}, '${item.size}', 1)"
+              aria-label="Increase quantity">+</button>
+          </div>
+          <button class="remove-btn"
+            onclick="removeItem(${item.id}, '${item.size}')">Remove</button>
+        </div>
+        <strong style="font-size:11px">
+          ${money(product.price * item.qty)}
+        </strong>
+      </div>
+    `;
+  }).join("");
+}
+
+function openCart() {
+  document.getElementById("cartDrawer").classList.add("open");
+  document.getElementById("overlay").classList.add("open");
+}
+
+function closeCart() {
+  document.getElementById("cartDrawer").classList.remove("open");
+  document.getElementById("overlay").classList.remove("open");
+}
+
+function checkout() {
+  if (!cart.length) {
+    alert("Your shopping bag is empty!");
+    return;
+  }
+
+  closeCart();
+  document.getElementById("checkoutMessage").textContent = "";
+  document.getElementById("checkoutModal").classList.add("open");
+}
+
+function closeCheckout() {
+  document.getElementById("checkoutModal").classList.remove("open");
+}
+
+document.getElementById("checkoutForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  document.getElementById("checkoutMessage").textContent =
+    "This is only a demo. No order has been submitted, no information has been sent, and no payment has been taken. Connect a secure backend before accepting real orders.";
+});
+
+function showPolicy(title, text) {
+  document.getElementById("infoTitle").textContent = title;
+  document.getElementById("infoText").textContent = text;
+  document.getElementById("infoModal").classList.add("open");
+}
+
+function closeInfo() {
+  document.getElementById("infoModal").classList.remove("open");
+}
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.classList.toggle("active", btn === button);
+    });
+
+    renderProducts();
+  });
+});
+
+document.getElementById("search").addEventListener("input", renderProducts);
+
+document.getElementById("newsletterForm").addEventListener("submit", event => {
+  event.preventDefault();
+  document.getElementById("newsletterMessage").textContent =
+    "Thanks for your interest! Newsletter registration is a demo and your email has not been saved.";
+  event.target.reset();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+renderProducts();
+renderCart();
+</script>
+
+</body>
+</html>
