@@ -1299,12 +1299,40 @@ document.getElementById("authForm").addEventListener("submit", async function(ev
 async function checkUserLogin() {
   if (!window.supabaseClient) return;
 
-  const { data } = await window.supabaseClient.auth.getUser();
+  const { data, error } =
+    await window.supabaseClient.auth.getUser();
+
+  if (error) {
+    console.error("Login check error:", error.message);
+    return;
+  }
+
+  const loginButton = document.querySelector(
+    '.header-actions button[aria-label="Login"]'
+  );
+
+  if (loginButton) {
+    loginButton.style.display = data.user ? "none" : "";
+  }
 
   if (data.user) {
     console.log("Logged in:", data.user.email);
   }
-    }  
+}
+
+checkUserLogin();
+
+window.supabaseClient?.auth.onAuthStateChange(
+  (event, session) => {
+    const loginButton = document.querySelector(
+      '.header-actions button[aria-label="Login"]'
+    );
+
+    if (loginButton) {
+      loginButton.style.display = session ? "none" : "";
+    }
+  }
+);
 </script>
 
 <script>
