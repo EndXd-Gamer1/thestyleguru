@@ -727,12 +727,15 @@ footer h4 {
     <a href="#about">Our Story</a>
   </nav>
 
-  <div class="header-actions">
-    <button class="icon-btn" aria-label="Search products"
-      onclick="document.getElementById('search').focus()">⌕</button>
-    <button class="icon-btn" aria-label="Open shopping cart"
-      onclick="openCart()">Bag <span class="cart-count" id="cartCount">0</span></button>
-  </div>
+<div class="header-actions">
+  <button class="icon-btn" onclick="openAuth()" aria-label="Login">
+    👤 Login
+  </button>
+  <button class="icon-btn" aria-label="Search products"
+    onclick="document.getElementById('search').focus()">⌕</button>
+  <button class="icon-btn" aria-label="Open shopping cart"
+    onclick="openCart()">Bag <span class="cart-count" id="cartCount">0</span></button>
+</div>
 </header>
 
 <main>
@@ -1222,7 +1225,170 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 renderProducts();
 renderCart();
+// THE STYLE GURU - SUPABASE AUTH
+
+let authMode = "login";
+
+function openAuth() {
+  document.getElementById("authModal").style.display = "flex";
+  document.getElementById("authMessage").textContent = "";
+}
+
+function closeAuth() {
+  document.getElementById("authModal").style.display = "none";
+}
+
+function toggleAuthMode() {
+  authMode = authMode === "login" ? "signup" : "login";
+
+  document.getElementById("authHeading").textContent =
+    authMode === "login" ? "Login to your account" : "Create your account";
+
+  document.getElementById("authSubmit").textContent =
+    authMode === "login" ? "Login" : "Sign Up";
+
+  document.getElementById("authSwitch").textContent =
+    authMode === "login"
+      ? "Create a new account"
+      : "Already have an account? Login";
+
+  document.getElementById("authMessage").textContent = "";
+}
+
+document.getElementById("authForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("authEmail").value.trim();
+  const password = document.getElementById("authPassword").value;
+  const message = document.getElementById("authMessage");
+  const button = document.getElementById("authSubmit");
+
+  message.textContent = "Please wait...";
+  button.disabled = true;
+
+  try {
+    let result;
+
+    if (authMode === "signup") {
+      result = await window.supabaseClient.auth.signUp({
+        email: email,
+        password: password
+      });
+    } else {
+      result = await window.supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+    }
+
+    if (result.error) throw result.error;
+
+    if (authMode === "signup" && !result.data.session) {
+      message.textContent = "Account created! Check your email to confirm your account.";
+    } else {
+      message.textContent = "Login successful!";
+      setTimeout(closeAuth, 1000);
+    }
+  } catch (error) {
+    message.textContent = error.message || "Something went wrong.";
+  } finally {
+    button.disabled = false;
+  }
+});
+
+async function checkUserLogin() {
+  if (!window.supabaseClient) return;
+
+  const { data } = await window.supabaseClient.auth.getUser();
+
+  if (data.user) {
+    console.log("Logged in:", data.user.email);
+  }
+    }  
 </script>
 
+<!-- THE STYLE GURU LOGIN -->
+<div id="authModal" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.8);
+z-index:99999;
+align-items:center;
+justify-content:center;
+padding:20px;
+">
+  <div style="
+  background:#fff;
+  color:#111;
+  width:100%;
+  max-width:380px;
+  padding:28px;
+  border-radius:12px;
+  position:relative;
+  font-family:Arial,sans-serif;
+  ">
+    <button onclick="closeAuth()" style="
+    position:absolute;
+    right:12px;
+    top:10px;
+    border:0;
+    background:none;
+    font-size:24px;
+    ">×</button>
+
+    <h2 style="margin-top:5px">THE STYLE GURU</h2>
+    <p id="authHeading">Login to your account</p>
+
+    <form id="authForm">
+      <input
+        id="authEmail"
+        type="email"
+        placeholder="Email address"
+        required
+        style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box"
+      >
+
+      <input
+        id="authPassword"
+        type="password"
+        placeholder="Password (minimum 6 characters)"
+        minlength="6"
+        required
+        style="width:100%;padding:12px;margin:8px 0;box-sizing:border-box"
+      >
+
+      <button type="submit" id="authSubmit" style="
+      width:100%;
+      padding:13px;
+      margin-top:10px;
+      background:#111;
+      color:white;
+      border:0;
+      cursor:pointer;
+      ">Login</button>
+    </form>
+
+    <p id="authMessage" style="font-size:13px"></p>
+
+    <button
+      type="button"
+      id="authSwitch"
+      onclick="toggleAuthMode()"
+      style="border:0;background:none;text-decoration:underline;cursor:pointer"
+    >Create a new account</button>
+  </div>
+</div>  
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://uuwcbnnitxtnelqmuyam.supabase.co";
+const SUPABASE_KEY = "sb_publishable_nOipMeH92uZqKHSOy50uLA_8FV3P32A";
+
+window.supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>  
 </body>
 </html>
