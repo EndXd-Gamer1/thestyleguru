@@ -1,7 +1,7 @@
 {
-  "serverName": "Fill server name here",
-  "serverIp": "example.com",
-  "bedrockPort": 19132,
+  "serverName": "VeloriaSMP",
+  "serverIp": "veloriasmp-IRY7.aternos.me",
+  "bedrockPort": 18318,
   "bedrockPlayersCanJoin": true, 
   "discordLink": "https://discord.gg/S763GafZPR",
   "logoPath": "logo.jpg",
